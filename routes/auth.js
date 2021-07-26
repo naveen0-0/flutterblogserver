@@ -2,12 +2,13 @@ const router = require('express').Router();
 const User = require('../models/User');
 const { key } = require('../config');
 const jwt = require('jsonwebtoken');
+const { checkToken } = require('../middleware')
 
 //* Getting a individual user
-router.route('/:username').get((req,res) => {
+router.route('/:username').get(checkToken,(req,res) => {
     User.findOne({ username : req.params.username }, (err,result) => {
         if(err) res.status(500).json({ msg : err})
-        res,json({
+        res.json({
             data : result,
             username : req.params.username
         })
@@ -53,7 +54,7 @@ router.route('/register').post((req,res) => {
 })
 
 //* Updating Password
-router.route('/update/:username').patch((req,res) => {
+router.route('/update/:username').patch(checkToken,(req,res) => {
     User.findOneAndUpdate(
         { username: req.params.username },
         { $set : { password : req.body.password }},
@@ -69,7 +70,7 @@ router.route('/update/:username').patch((req,res) => {
 })
 
 //* Deleting user
-router.route("/delete/:username").delete((req,res) => {
+router.route("/delete/:username").delete(checkToken,(req,res) => {
     User.findOneAndDelete({ username : req.params. username }, (err,result) => {
         if(err) return res.status(500).json({ msg : err });
         const msg = {
