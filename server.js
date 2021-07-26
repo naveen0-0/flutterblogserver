@@ -1,4 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth');
+
+
+//* Initializing Application
 const app = express();
 
 
@@ -7,13 +12,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
 
 //*Routes
+app.use('/user',authRoutes)
 app.route('/').get((req,res) => {
     res.send("Flutter server Application")
 })
 
-
 //*MongoDB Connection
-
+mongoose.connect(process.env.MONGO || "mongodb://localhost/flutterblog", { useNewUrlParser : true, useFindAndModify : false, useUnifiedTopology : true })
+        .then(() => console.log("Mongodb connection successful"))
+        .catch(() => console.log("Mongodb connection failure"))
 
 //*Port
 const PORT = process.env.PORT || 8000;
