@@ -1,0 +1,1 @@
+This is backend server for a flutter blog application built using Nodejs, Expressjs and MongoDB technologies
