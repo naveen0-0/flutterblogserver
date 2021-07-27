@@ -15,6 +15,23 @@ router.route('/:username').get(checkToken,(req,res) => {
     })
 })
 
+
+//* Check User
+router.route('/checkusername/:username').get((req,res) => {
+    User.findOne({ username : req.params.username }, (err,result) => {
+        if(err) res.status(500).json({ msg : err})
+        if(result != null){
+            return res.json({
+                status:true
+            })
+        }else{
+            return res.json({
+                status:false
+            })
+        }
+    })
+})
+
 //* Login
 router.route('/login').post((req,res) => {
     User.findOne({ username : req.body.username }, (err,result) => {
