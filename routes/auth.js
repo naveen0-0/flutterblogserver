@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/User');
 const { key } = require('../config');
 const jwt = require('jsonwebtoken');
-const { checkToken } = require('../middleware')
+const { checkToken } = require('../middleware');
 
 //* Getting a individual user
 router.route('/:username').get(checkToken,(req,res) => {
