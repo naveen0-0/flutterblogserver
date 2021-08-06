@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile')
 
 
 //* Initializing Application
@@ -12,7 +13,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
 
 //*Routes
-app.use('/user',authRoutes)
+app.use('/user',authRoutes);
+app.use('/profile',profileRoutes)
 app.route('/').get((req,res) => {
     res.send("Flutter server Application")
 })
