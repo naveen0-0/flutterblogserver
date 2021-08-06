@@ -11,12 +11,9 @@ const profileSchema = new Schema({
     DOB:String,
     titleline:String,
     about:String,
-    img:{
-        type:String,
-        default:""
-    }
 },{
     timestamps:true
 })
 
 const Profile = model('profile',profileSchema);
+module.exports = Profile;
