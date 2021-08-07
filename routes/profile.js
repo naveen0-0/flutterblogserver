@@ -20,6 +20,16 @@ router.route("/add").post(checkToken,(req,res)=>{
         })
 })
 
+router.route('/checkprofile').get(checkToken,(req,res) => {
+    Profile.findOne({ username:req.decoded.username },(err,result) => {
+        if(err) return res.json({ err:err })
+        if(result ==null) return res.json({status:false})
+        res.json({
+            status:true
+        })
+    })
+})
+
 
 
 module.exports = router;

@@ -6,11 +6,21 @@ const profileSchema = new Schema({
         required:true,
         unique:true
     },
-    name:String,
-    profession:String,
-    dob:String,
-    title:String,
-    about:String,
+    name:{
+        type:String
+    },
+    profession:{
+        type:String
+    },
+    dob:{
+        type:String
+    },
+    title:{
+        type:String
+    },
+    about:{
+        type:String
+    },
 },{
     timestamps:true
 })
