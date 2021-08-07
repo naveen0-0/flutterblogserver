@@ -8,8 +8,8 @@ const profileSchema = new Schema({
     },
     name:String,
     profession:String,
-    DOB:String,
-    titleline:String,
+    dob:String,
+    title:String,
     about:String,
 },{
     timestamps:true

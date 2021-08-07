@@ -7,8 +7,8 @@ router.route("/add").post(checkToken,(req,res)=>{
         username:req.decoded.username,
         name:req.body.name,
         profession:req.body.profession,
-        DOB:req.body.DOB,
-        titleline:req.body.titleline,
+        dob:req.body.dob,
+        title:req.body.title,
         about:req.body.about,
     });
     profile.save()
